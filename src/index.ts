@@ -55,3 +55,19 @@ app.get('/produtos', async (req, res) => {
 app.listen(8000, () => {
   console.log('Servidor rodando na porta 8000')
 })
+
+/*use defaultdb;
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    urlfoto VARCHAR(255) NOT NULL,
+    descricao TEXT
+);
+#insertes
+
+INSERT INTO produtos (nome, preco, urlfoto, descricao)
+VALUES
+('Notebook Dell', 3500.00, 'https://exemplo.com/notebook.jpg', 'Notebook Dell i5 com 8GB RAM e 256GB SSD'),
+('Smartphone Samsung', 2200.00, 'https://exemplo.com/smartphone.jpg', 'Celular Samsung Galaxy com câmera de 108MP'),
+('Fone de Ouvido JBL', 350.00, 'https://exemplo.com/fone.jpg', 'Fone Bluetooth JBL com cancelamento de ruído');*/
