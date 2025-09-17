@@ -16,6 +16,16 @@ app.get('/produtos', async (req:Request, res:Response) => {
  res.json(produtos)
 })
 
+app.post('/produtos', async (req:Request, res:Response) => {
+ const { nome, preco, urlfoto, descricao } = req.body
+ if (!nome || !preco || !urlfoto || !descricao) 
+   return res.status(400).json({ error: 'Nome, preço, urlfoto e descrição são obrigatórios!' })
+ 
+ const produto = { nome, preco, urlfoto, descricao }
+ const resultado = await db.collection('produtos').insertOne(produto)
+ res.status(201).json({ nome, preco, urlfoto, descricao, id:resultado.insertedId })
+})
+
 // criando o servidor na porta 8000 com o express
 app.listen(8000, () => {
   console.log('Servidor rodando na porta 8000')
