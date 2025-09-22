@@ -6,5 +6,8 @@
 		{
 			"path": "../1023b-frontend-novo"
 		}
-	]
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "1023B-backend-novo"
+	}
 }
