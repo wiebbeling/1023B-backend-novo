@@ -1,12 +1,18 @@
-import {Router} from 'express'
+import { Router } from "express";
+import carrinhoController from "./carrinho/carrinho.controller.js";
+import produtosController from "./produtos/produtos.controller.js";
 
-import CarrinhoController from './carrinho/carrinho.controller'
-import ProdutosController from './produtos/produtos.controller'
+const rotas = Router();
 
-const carrinhoController = new CarrinhoController()
+// Rotas do Carrinho
+rotas.get("/carrinho/:usuarioId", carrinhoController.listar);       // listar carrinho do usuário
+rotas.post("/carrinho", carrinhoController.adicionarItem);          // adicionar item ao carrinho
+rotas.put("/carrinho", carrinhoController.atualizarQuantidade);     // atualizar quantidade (recebe no body)
+rotas.delete("/carrinho/item", carrinhoController.removerItem);     // remover item específico (recebe no body)
+rotas.delete("/carrinho/:usuarioId", carrinhoController.remover);   // remover carrinho inteiro
 
-const rotas = Router()
-rotas.get('/carrinho', carrinhoController.listar)
-rotas.post('/carrinho', carrinhoController.adicionar)
+// Rotas dos produtos
+rotas.get("/produtos", produtosController.listar);
+rotas.post("/produtos", produtosController.adicionar);
 
-export default rotas
+export default rotas;
